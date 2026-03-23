@@ -89,7 +89,7 @@ Ouvre un panel avec 3 onglets :
 Prérequis : **Java 17**, **Gradle 8.x**
 
 ```bash
-git clone https://github.com/TON_PSEUDO/admintools.git
+git clone https://github.com/Floodfield-Sudio/admintools.git
 cd admintools
 ./gradlew build
 # Le .jar se trouve dans build/libs/
