@@ -6,75 +6,58 @@
 body {
   background-color: #0d1117 !important; 
   color: #c9d1d9 !important;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px;
 }
 
-/* 2. BLOCS BASH - SUPPRESSION DU DOUBLE ENCADREMENT */
-/* On enlève la bordure sur le conteneur extérieur si GitHub en ajoute un */
-div.highlight, .language-bash, .language-python {
+/* 2. TABLEAUX - NETTOYAGE RADICAL DU BLANC */
+table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  background-color: #0d1117 !important; /* Force le fond sombre */
+  border: 1px solid #30363d !important;
+  display: table !important; /* Force l'affichage en tableau réel */
+}
+
+/* Force TOUTES les lignes à être sombres (supprime l'effet ligne blanche/grise) */
+table tr, 
+table tr:nth-child(2n) {
+  background-color: #0d1117 !important; 
+  border: 1px solid #30363d !important;
+}
+
+/* Force TOUTES les cellules et en-têtes */
+table td, 
+table th {
+  border: 1px solid #30363d !important;
+  padding: 12px !important;
+  color: #ffffff !important; /* Texte blanc pour la lisibilité */
   background-color: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 10px 0 !important;
 }
 
-/* On ne garde qu'UNE SEULE bordure sur l'élément de texte */
+/* En-tête légèrement plus gris pour le look "GitHub Dark" */
+table th {
+  background-color: #161b22 !important;
+  font-weight: bold;
+}
+
+/* 3. BLOCS BASH (Déjà OK, on garde) */
 pre {
   background-color: #161b22 !important; 
-  border: 1px solid #30363d !important; /* L'unique bordure */
+  border: 1px solid #30363d !important;
   color: #e6edf3 !important;
   padding: 16px !important;
   border-radius: 6px !important;
-  overflow: auto;
 }
+pre code { border: none !important; background: transparent !important; }
 
-/* On vide le style du code à l'intérieur pour éviter le double cadre */
-pre code {
-  border: none !important;
-  background: transparent !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: block;
-}
-
-/* 3. CODE COURT (exemple : 'k') */
+/* 4. CODE COURT (exemple : 'k') */
 :not(pre) > code {
   font-size: 85% !important;
   background-color: #21262d !important;
   color: #ff7b72 !important;
   padding: 0.2em 0.4em !important;
-  border-radius: 4px !important;
 }
 
-/* 4. TABLEAUX - CORRECTION DES BORDURES MANQUANTES */
-table {
-  border-collapse: collapse !important; /* Fusionne les bordures pour éviter les trous */
-  width: 100% !important;
-  background-color: #0d1117 !important;
-  margin: 20px 0 !important;
-  border: 1px solid #30363d !important; /* Bordure extérieure du tableau */
-}
-
-/* On force l'affichage de CHAQUE bordure de cellule */
-th, td {
-  border: 1px solid #30363d !important; /* Bordure interne visible */
-  padding: 12px !important;
-  color: #ffffff !important;
-  background-color: transparent !important;
-}
-
-th {
-  background-color: #161b22 !important;
-  font-weight: bold;
-}
-
-/* 5. LOGO ET BADGES */
-img { background-color: transparent !important; border: none !important; }
-img[width="350"] { display: block; margin: 0 auto 20px auto; }
-a img { display: inline-block !important; margin-right: 5px; vertical-align: middle; }
-
-/* 6. TITRES ET LIENS */
+/* 5. LOGO ET TITRES */
+img { background-color: transparent !important; }
 h1, h2, h3 { color: #ffffff !important; border-bottom: 1px solid #30363d !important; }
-a { color: #58a6ff !important; text-decoration: none; }
+a { color: #58a6ff !important; }
