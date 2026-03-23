@@ -27,7 +27,7 @@ Ouvre une issue avec le tag `enhancement` en décrivant :
 
 ```bash
 # 1. Fork puis clone
-git clone https://github.com/TON_PSEUDO/admintools.git
+git clone https://github.com/Floodfield-Sudio/admintools.git
 cd admintools
 
 # 2. Créer une branche descriptive
