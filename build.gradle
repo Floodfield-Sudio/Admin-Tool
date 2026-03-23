@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '[6.0,6.2)', changing: true
+    }
+}
+
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+version   = mod_version
+group     = 'com.admintools'
+base { archivesName = 'admintools' }
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers',        'REGISTRIES'
+            property 'forge.logging.console.level',  'debug'
+            mods { admintools { source sourceSets.main } }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers',        'REGISTRIES'
+            property 'forge.logging.console.level',  'debug'
+            mods { admintools { source sourceSets.main } }
+        }
+    }
+}
+
+repositories { mavenCentral() }
+
+// Force UTF-8 pour eviter les erreurs "unmappable character" sur Windows
+compileJava.options.encoding = 'UTF-8'
+javadoc.options.encoding     = 'UTF-8'
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : 'admintools',
+            'Specification-Vendor'    : 'DevStudioPro',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'DevStudioPro',
+        ])
+    }
+}

@@ -1,0 +1,28 @@
+modLoader   = "javafml"
+loaderVersion = "[47,)"
+license     = "MIT"
+
+[[mods]]
+modId       = "admintools"
+version     = "1.0.0"
+displayName = "AdminTools -- Anti-Cheat & ESP"
+description = '''
+Outils admin : X-Ray ESP, Entity ESP, Vanish, NoClip, Anti-Cheat (Fly/NoClip/XRay), InvSee, TopLuck.
+Panel admin : touche K  |  Commande : /at
+Cote client OPTIONNEL -- seuls les admins ont besoin de l installer.
+Les joueurs normaux peuvent se connecter sans ce mod.
+'''
+
+[[dependencies.admintools]]
+    modId        = "forge"
+    mandatory    = true
+    versionRange = "[47,)"
+    ordering     = "NONE"
+    side         = "BOTH"
+
+[[dependencies.admintools]]
+    modId        = "minecraft"
+    mandatory    = true
+    versionRange = "[1.20.1,1.21)"
+    ordering     = "NONE"
+    side         = "BOTH"

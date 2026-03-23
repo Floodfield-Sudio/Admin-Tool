@@ -1,0 +1,38 @@
+# ── Gradle ────────────────────────────────────────────────────────────────────
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.classpath
+*.project
+.settings/
+bin/
+
+# ── Eclipse / ForgeGradle ─────────────────────────────────────────────────────
+eclipse/
+run/
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+__MACOSX/
+
+# ── Windows ───────────────────────────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+
+# ── Logs DevStudio Pro ────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Fichiers sensibles (ne jamais committer) ──────────────────────────────────
+# Token GitHub, clés API, etc.
+*.env
+.env*
+secrets.*
+config/secrets/
