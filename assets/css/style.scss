@@ -2,84 +2,63 @@
 ---
 @import "{{ site.theme }}";
 
-/* 1. RESET COMPLET DU FOND */
-html, body {
-  background-color: #0d1117 !important; /* Le gris-noir de GitHub */
+/* 1. FOND GLOBAL */
+body {
+  background-color: #0d1117 !important; /* Noir/Gris profond */
   color: #c9d1d9 !important;
-  margin: 0 auto;
   max-width: 900px;
-  padding: 20px;
-  -webkit-font-smoothing: antialiased;
+  margin: 0 auto;
+  padding: 30px;
 }
 
-/* 2. SUPPRESSION RADICALE DU BLANC AUX COINS ET OMBRES */
-* {
-  box-shadow: none !important;
-  border-radius: 0 !important; /* On enlève l'arrondi pour tuer les pixels blancs */
-  text-shadow: none !important;
-  -webkit-box-shadow: none !important;
-}
-
-/* 3. BLOCS DE CODE (BASH, etc.) - COULEUR IDENTIQUE AU FOND */
-pre, code, .highlight {
-  background-color: #0d1117 !important; /* MÊME COULEUR QUE LE FOND */
+/* 2. BLOCS BASH (Fond plus clair pour le contraste) */
+pre, .highlight {
+  background-color: #161b22 !important; /* Gris anthracite plus clair */
+  border: 1px solid #30363d !important;
   color: #e6edf3 !important;
-  border: 1px solid #30363d !important; /* Bordure fine très sombre */
-  padding: 15px !important;
-  margin: 10px 0 !important;
+  padding: 16px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
 }
 
-/* On s'assure que le texte à l'intérieur n'a aucun fond propre */
-pre code, .highlight pre, .highlight code {
-  background: none !important;
-  background-color: transparent !important;
+/* 3. CODE COURT (exemple : 'k') - Taille réduite */
+:not(pre) > code {
+  font-size: 85% !important; /* Plus petit */
+  background-color: #21262d !important;
+  color: #ff7b72 !important; /* Couleur corail pour bien le voir */
+  padding: 0.2em 0.4em !important;
+  border-radius: 6px !important;
   border: none !important;
-  padding: 0 !important;
 }
 
-/* 4. TABLEAUX (RETOUR AU STYLE PROPRE) */
+/* 4. TABLEAU SOMBRE ET LISIBLE */
 table {
   border-collapse: collapse !important;
   width: 100% !important;
-  background-color: transparent !important;
+  background-color: #0d1117 !important; /* Fond noir */
   border: 1px solid #30363d !important;
   margin: 20px 0 !important;
 }
 
-th, td {
+/* Supprime le blanchiment des lignes */
+table tr, table td, table th {
+  background-color: #0d1117 !important; 
   border: 1px solid #30363d !important;
+  color: #ffffff !important; /* Texte blanc pur pour lire facilement */
   padding: 12px !important;
-  background-color: transparent !important;
-  text-align: left !important;
 }
 
-th {
-  background-color: #161b22 !important; /* Un poil plus clair pour l'en-tête */
-  color: #ffffff !important;
+/* En-tête de tableau un peu plus distinct */
+table th {
+  background-color: #161b22 !important;
+  font-weight: bold;
 }
 
-/* 5. IMAGES & BADGES */
-img {
-  background-color: transparent !important;
-  border: none !important;
-}
-
-/* Logo centré */
-img[width="350"] {
-  display: block;
-  margin: 0 auto 20px auto;
-}
-
-/* Badges alignés */
-a img {
-  display: inline-block !important;
-  margin-right: 5px;
-  vertical-align: middle;
-}
+/* 5. LOGO ET BADGES */
+img { background-color: transparent !important; border: none !important; }
+img[width="350"] { display: block; margin: 0 auto 20px auto; }
+a img { display: inline-block !important; margin-right: 5px; vertical-align: middle; }
 
 /* 6. TITRES ET LIENS */
-h1, h2, h3 { 
-  color: #ffffff !important; 
-  border-bottom: 1px solid #30363d !important;
-}
+h1, h2, h3 { color: #ffffff !important; border-bottom: 1px solid #30363d !important; }
 a { color: #58a6ff !important; text-decoration: none; }
