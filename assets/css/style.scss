@@ -2,82 +2,84 @@
 ---
 @import "{{ site.theme }}";
 
-/* 1. FOND GLOBAL ET TEXTE */
-body {
-  background-color: #0d1117 !important; 
+/* 1. RESET COMPLET DU FOND */
+html, body {
+  background-color: #0d1117 !important; /* Le gris-noir de GitHub */
   color: #c9d1d9 !important;
-  max-width: 900px;
   margin: 0 auto;
-  padding: 30px;
+  max-width: 900px;
+  padding: 20px;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 2. FIX RADICAL POUR LES BLOCS DE CODE (Bash, Python, etc.) */
-/* On nettoie le bloc entier */
-pre {
-  background-color: #161b22 !important; /* Gris très foncé */
-  border: 1px solid #30363d !important; /* Bordure sombre discrète */
-  color: #e6edf3 !important;
-  padding: 16px !important;
-  border-radius: 6px !important;
-  box-shadow: none !important; /* Supprime le contour blanc moche */
-  overflow: auto;
-}
-
-/* On nettoie le texte à l'intérieur pour enlever l'encadré gris moche */
-pre code {
-  background-color: transparent !important; /* SUPPRIME L'ENCADRÉ DU TEXTE */
-  color: inherit !important;
-  padding: 0 !important;
-  border: none !important;
+/* 2. SUPPRESSION RADICALE DU BLANC AUX COINS ET OMBRES */
+* {
   box-shadow: none !important;
+  border-radius: 0 !important; /* On enlève l'arrondi pour tuer les pixels blancs */
   text-shadow: none !important;
+  -webkit-box-shadow: none !important;
 }
 
-/* Pour le code "en ligne" (ex: `mon_fichier.py`) hors des gros blocs */
-:not(pre) > code {
-  background-color: #21262d !important;
+/* 3. BLOCS DE CODE (BASH, etc.) - COULEUR IDENTIQUE AU FOND */
+pre, code, .highlight {
+  background-color: #0d1117 !important; /* MÊME COULEUR QUE LE FOND */
   color: #e6edf3 !important;
-  padding: 0.2em 0.4em !important;
-  border-radius: 6px !important;
-  border: none !important;
+  border: 1px solid #30363d !important; /* Bordure fine très sombre */
+  padding: 15px !important;
+  margin: 10px 0 !important;
 }
 
-/* 3. TABLEAUX (On garde ce qui marchait) */
+/* On s'assure que le texte à l'intérieur n'a aucun fond propre */
+pre code, .highlight pre, .highlight code {
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* 4. TABLEAUX (RETOUR AU STYLE PROPRE) */
 table {
   border-collapse: collapse !important;
+  width: 100% !important;
   background-color: transparent !important;
   border: 1px solid #30363d !important;
-  margin: 20px 0;
+  margin: 20px 0 !important;
 }
 
 th, td {
   border: 1px solid #30363d !important;
-  padding: 10px !important;
+  padding: 12px !important;
   background-color: transparent !important;
+  text-align: left !important;
 }
 
-/* 4. IMAGES ET BADGES */
+th {
+  background-color: #161b22 !important; /* Un poil plus clair pour l'en-tête */
+  color: #ffffff !important;
+}
+
+/* 5. IMAGES & BADGES */
 img {
   background-color: transparent !important;
   border: none !important;
-  box-shadow: none !important;
 }
 
+/* Logo centré */
 img[width="350"] {
   display: block;
   margin: 0 auto 20px auto;
 }
 
+/* Badges alignés */
 a img {
   display: inline-block !important;
-  margin-right: 8px;
+  margin-right: 5px;
   vertical-align: middle;
 }
 
-/* 5. TITRES ET LIENS */
+/* 6. TITRES ET LIENS */
 h1, h2, h3 { 
   color: #ffffff !important; 
   border-bottom: 1px solid #30363d !important;
 }
-
 a { color: #58a6ff !important; text-decoration: none; }
