@@ -185,5 +185,5 @@ Voir [LICENSE](LICENSE) pour les détails complets.
 
 ## 📬 Contact
 
-Ouvre une [issue](../../issues) pour les bugs ou suggestions.
+Ouvre une [issue](../../issues) pour les bugs ou suggestions.<br>
 [Site Web](https://floodfield-sudio.github.io/FFS.index/)
