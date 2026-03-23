@@ -4,52 +4,68 @@
 
 /* 1. FOND GLOBAL */
 body {
-  background-color: #0d1117 !important; /* Noir/Gris profond */
+  background-color: #0d1117 !important; 
   color: #c9d1d9 !important;
   max-width: 900px;
   margin: 0 auto;
   padding: 30px;
 }
 
-/* 2. BLOCS BASH (Fond plus clair pour le contraste) */
-pre, .highlight {
-  background-color: #161b22 !important; /* Gris anthracite plus clair */
-  border: 1px solid #30363d !important;
+/* 2. BLOCS BASH - SUPPRESSION DU DOUBLE ENCADREMENT */
+/* On enlève la bordure sur le conteneur extérieur si GitHub en ajoute un */
+div.highlight, .language-bash, .language-python {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 10px 0 !important;
+}
+
+/* On ne garde qu'UNE SEULE bordure sur l'élément de texte */
+pre {
+  background-color: #161b22 !important; 
+  border: 1px solid #30363d !important; /* L'unique bordure */
   color: #e6edf3 !important;
   padding: 16px !important;
   border-radius: 6px !important;
-  box-shadow: none !important;
+  overflow: auto;
 }
 
-/* 3. CODE COURT (exemple : 'k') - Taille réduite */
-:not(pre) > code {
-  font-size: 85% !important; /* Plus petit */
-  background-color: #21262d !important;
-  color: #ff7b72 !important; /* Couleur corail pour bien le voir */
-  padding: 0.2em 0.4em !important;
-  border-radius: 6px !important;
+/* On vide le style du code à l'intérieur pour éviter le double cadre */
+pre code {
   border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
 }
 
-/* 4. TABLEAU SOMBRE ET LISIBLE */
+/* 3. CODE COURT (exemple : 'k') */
+:not(pre) > code {
+  font-size: 85% !important;
+  background-color: #21262d !important;
+  color: #ff7b72 !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 4px !important;
+}
+
+/* 4. TABLEAUX - CORRECTION DES BORDURES MANQUANTES */
 table {
-  border-collapse: collapse !important;
+  border-collapse: collapse !important; /* Fusionne les bordures pour éviter les trous */
   width: 100% !important;
-  background-color: #0d1117 !important; /* Fond noir */
-  border: 1px solid #30363d !important;
+  background-color: #0d1117 !important;
   margin: 20px 0 !important;
+  border: 1px solid #30363d !important; /* Bordure extérieure du tableau */
 }
 
-/* Supprime le blanchiment des lignes */
-table tr, table td, table th {
-  background-color: #0d1117 !important; 
-  border: 1px solid #30363d !important;
-  color: #ffffff !important; /* Texte blanc pur pour lire facilement */
+/* On force l'affichage de CHAQUE bordure de cellule */
+th, td {
+  border: 1px solid #30363d !important; /* Bordure interne visible */
   padding: 12px !important;
+  color: #ffffff !important;
+  background-color: transparent !important;
 }
 
-/* En-tête de tableau un peu plus distinct */
-table th {
+th {
   background-color: #161b22 !important;
   font-weight: bold;
 }
