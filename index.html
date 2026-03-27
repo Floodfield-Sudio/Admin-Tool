@@ -52,11 +52,11 @@
             background-color: #0d1117 !important;
             border: 1px solid var(--border);
             padding: 16px;
-            padding-top: 40px;
+            padding-top: 36px; /* Espace pour le bouton copier */
             border-radius: 8px;
             overflow-x: auto;
             margin: 16px 0;
-            position: relative;
+            position: relative; /* Nécessaire pour positionner le bouton */
         }
 
         pre code {
@@ -86,6 +86,7 @@
             background-color: rgba(22, 27, 34, 0.5);
         }
 
+        /* Styles pour le bouton de copie */
         .copy-button {
             position: absolute;
             top: 8px;
@@ -100,7 +101,6 @@
             display: flex;
             align-items: center;
             transition: all 0.2s ease;
-            z-index: 10;
         }
 
         .copy-button:hover {
@@ -111,22 +111,24 @@
 </head>
 <body class="min-h-screen flex flex-col items-center p-6 md:p-12">
 
+    <!-- Navigation -->
     <nav class="w-full max-w-4xl mb-8">
         <a href="https://floodfield-sudio.github.io/FFS.index/" class="flex items-center text-sm font-semibold">
             <span class="mr-2">←</span> Retour à l'accueil
         </a>
     </nav>
 
+    <!-- Header -->
     <header class="w-full max-w-4xl mb-12 border-b border-[#30363d] pb-8">
-        <h1 class="text-4xl font-bold text-white mb-4 flex items-center flex-wrap">
+        <h1 class="text-4xl font-bold text-white mb-4 flex items-center">
             🛡 <a href="https://github.com/Floodfield-Sudio/Admin-Tool" class="ml-3 hover:text-[#58a6ff]">AdminTools — Anti-Cheat & Admin Panel</a>
         </h1>
         
         <div class="flex flex-wrap gap-2 mb-6">
-            <img src="https://img.shields.io/badge/Minecraft-1.20.1-green" alt="Minecraft">
-            <img src="https://img.shields.io/badge/Forge-47.x-orange" alt="Forge">
-            <img src="https://img.shields.io/badge/Java-17-blue" alt="Java">
-            <img src="https://img.shields.io/badge/License-Noncommercial-red" alt="License">
+            <a href="https://minecraft.net" target="_blank"><img src="https://img.shields.io/badge/Minecraft-1.20.1-green" alt="Minecraft"></a>
+            <a href="https://minecraftforge.net" target="_blank"><img src="https://img.shields.io/badge/Forge-47.x-orange" alt="Forge"></a>
+            <a href="https://adoptium.net" target="_blank"><img src="https://img.shields.io/badge/Java-17-blue" alt="Java"></a>
+            <a href="https://github.com/Floodfield-Sudio/Admin-Tool/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/badge/License-Noncommercial-red" alt="License"></a>
         </div>
 
         <p class="text-lg text-gray-300">
@@ -135,8 +137,10 @@
         </p>
     </header>
 
+    <!-- Main Content -->
     <main class="w-full max-w-4xl space-y-8">
         
+        <!-- Fonctionnalités -->
         <section class="glass-card p-6 md:p-8">
             <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">✨ Fonctionnalités</h2>
             
@@ -149,6 +153,20 @@
                     <tbody>
                         <tr><td><strong class="text-white">Ore X-Ray ESP</strong></td><td>Affiche les minerais à travers les blocs dans un rayon de 64 blocs, colorés par type</td></tr>
                         <tr><td><strong class="text-white">Entity ESP</strong></td><td>Affiche les joueurs et mobs à travers les murs (bleu = joueur, rouge = hostile, vert = passif)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-semibold text-white mt-8 mb-3">👤 Outils Admin</h3>
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr><th>Feature</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong class="text-white">Vanish</strong></td><td>Rend l'admin invisible + indicateur <code>[VANISH]</code> clignotant sur son écran</td></tr>
+                        <tr><td><strong class="text-white">NoClip Admin</strong></td><td>Passe en spectateur (noclip natif), restaure le mode précédent à la désactivation</td></tr>
+                        <tr><td><strong class="text-white">Alertes Anti-Cheat</strong></td><td>Reçoit les notifications de violation en temps réel</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -168,71 +186,227 @@
             </div>
 
             <h3 class="text-xl font-semibold text-white mt-8 mb-2">📊 Top Luck</h3>
-            <p class="mb-2">Classement des joueurs par ratio <strong class="text-white">minerais / roche hôte</strong>.</p>
+            <p class="mb-2">Classement des joueurs par ratio <strong class="text-white">minerais / roche hôte</strong> (pierre, netherrack, end stone).</p>
             <ul class="list-disc pl-6 space-y-1 text-gray-300">
-                <li>Détection automatique des ores de mods (Create, Mekanism...)</li>
+                <li>Détection automatique des ores de mods (Create, Mekanism, Thermal Series, etc.)</li>
                 <li>Ratio correct par dimension (Overworld / Nether / End)</li>
-                <li>Vue détaillée par type de minerai</li>
+                <li>Vue détaillée : barres par type de minerai + liste de tous les blocs cassés</li>
             </ul>
+
+            <h3 class="text-xl font-semibold text-white mt-8 mb-2">🎒 InvSee</h3>
+            <p>Inspection de l'inventaire complet d'un joueur en temps réel (lecture seule).</p>
         </section>
 
-        <section class="glass-card p-6 md:p-8 border-l-4 border-red-500">
-            <h2 class="text-2xl font-bold text-white mb-4">⚠️ Problème connu — Crash Serveur</h2>
-            <p class="text-gray-300 mb-4"><code>AdminToolsState</code> accède à un champ client-only lors de son initialisation, provoquant un crash serveur à la connexion d'un joueur.</p>
-            <p class="text-sm font-semibold text-gray-400 mb-2">Correctif à appliquer :</p>
-<pre><code>// Dans AdminToolsState.java
-private static SomeType clientFeatures = FMLEnvironment.dist.isClient()
-    ? Minecraft.getInstance().getSomething()
-    : null;</code></pre>
-        </section>
-
+        <!-- Utilisation -->
         <section class="glass-card p-6 md:p-8">
             <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🎮 Utilisation</h2>
-            <h3 class="text-xl font-semibold text-white mb-2">Commandes <code>/at</code></h3>
+            
+            <h3 class="text-xl font-semibold text-white mb-2">Panel admin — touche <code>K</code></h3>
+            <p class="mb-2">Ouvre un panel avec 3 onglets :</p>
+            <ul class="list-disc pl-6 space-y-1 mb-6 text-gray-300">
+                <li><strong class="text-white">Features</strong> — toggles pour activer/désactiver chaque fonctionnalité</li>
+                <li><strong class="text-white">Joueurs</strong> — liste des joueurs en ligne, avec boutons TP / InvSee / Check</li>
+                <li><strong class="text-white">Violations</strong> — log scrollable des alertes anti-cheat</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-white mt-6 mb-2">Commandes <code>/at</code></h3>
 <pre><code>/at                               → Statut de ses features
 /at status [joueur]               → Statut d'un joueur op
 /at toggle &lt;feature&gt; [joueur]     → Basculer une feature
+/at on|off &lt;feature&gt; [joueur]     → Forcer une feature
 /at tp &lt;joueur&gt;                   → Se téléporter au joueur
 /at invsee &lt;joueur&gt;               → Voir l'inventaire (GUI)
 /at topluck [reset &lt;joueur&gt;]      → Classement minerais (GUI)
+/at check &lt;joueur&gt;                → Infos rapides (mode, pos, ping)
 /at help                          → Aide complète</code></pre>
+            
+            <p class="mt-4"><strong class="text-white">Noms de features :</strong><br>
+            <code>ore_esp</code> · <code>entity_esp</code> · <code>vanish</code> · <code>noclip</code> · <code>alerts</code> · <code>fly_detect</code> · <code>noclip_detect</code> · <code>xray_detect</code></p>
+
+            <div class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r mt-6">
+                <p class="text-yellow-200 m-0">⚠️ Requiert <strong class="text-yellow-100">op level 2</strong> minimum.</p>
+            </div>
         </section>
 
+        <!-- Installation & Compilation -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="glass-card p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">📦 Installation</h2>
+                
+                <h3 class="text-lg font-semibold text-white mb-2">Serveur</h3>
+                <ol class="list-decimal pl-6 space-y-1 mb-6 text-gray-300">
+                    <li>Copier le <code>.jar</code> dans le dossier <code>mods/</code> du serveur</li>
+                    <li>Redémarrer le serveur</li>
+                    <li><strong class="text-white">Les joueurs n'ont pas besoin d'installer le mod</strong> pour se connecter</li>
+                </ol>
+
+                <h3 class="text-lg font-semibold text-white mb-2">Admin (optionnel)</h3>
+                <ol class="list-decimal pl-6 space-y-1 text-gray-300">
+                    <li>Copier le même <code>.jar</code> dans le dossier <code>mods/</code> de son client Forge</li>
+                    <li>Se connecter au serveur — le panel <code>[K]</code> et les ESP sont disponibles</li>
+                </ol>
+            </section>
+
+            <section class="glass-card p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔨 Compilation</h2>
+                <p class="mb-4">Prérequis : <strong class="text-white">Java 17</strong>, <strong class="text-white">Gradle 8.x</strong></p>
+<pre><code>git clone https://github.com/Floodfield-Sudio/admintools.git
+cd admintools
+./gradlew build
+# Le .jar se trouve dans build/libs/</code></pre>
+                
+                <h3 class="text-lg font-semibold text-white mt-4 mb-2">Ou utiliser DevStudio Pro :</h3>
+                <ol class="list-decimal pl-6 space-y-1 text-gray-300">
+                    <li>Ouvrir le dossier <code>admintools/</code> comme projet</li>
+                    <li>Onglet ⛏ Minecraft → Forge 1.20.1</li>
+                    <li>Cliquer 🔨 Build</li>
+                </ol>
+            </section>
+        </div>
+
+        <!-- Structure du Code -->
         <section class="glass-card p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔨 Compilation</h2>
-<pre><code>git clone https://github.com/Floodfield-Sudio/Admin-Tool.git
-cd Admin-Tool
-./gradlew build</code></pre>
+            <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🏗 Structure du code</h2>
+<pre><code>src/main/java/com/admintools/
+├── AdminToolsMod.java          ← Entrée principale @Mod
+├── AdminFeature.java           ← Enum des 8 features
+├── AdminToolsState.java        ← État serveur (features, vanish, noclip)
+├── TopLuckEntry.java           ← DTO neutre pour le classement
+├── client/
+│   ├── AdminPanel.java         ← GUI panel admin (touche K)
+│   ├── ClientAdminState.java   ← État client (features actives)
+│   ├── ClientPacketHandler.java← Proxy pour ouvrir les écrans depuis les packets
+│   ├── InvSeeScreen.java       ← Écran inventaire (lecture seule)
+│   ├── TopLuckScreen.java      ← Écran classement Top Luck
+│   ├── VanishHUD.java          ← Indicateur [VANISH] clignotant
+│   └── render/
+│       ├── ESPRenderer.java    ← Rendu ore/entity ESP (through walls)
+│       └── ESPRenderType.java  ← RenderType sans depth test
+├── server/
+│   ├── AdminCommand.java       ← Commande /at
+│   ├── TopLuckTracker.java     ← Suivi ratio minerais par joueur
+│   └── anticheat/
+│       ├── AntiCheatManager.java ← Détections Fly/NoClip/XRay
+│       └── ViolationType.java
+├── events/
+│   ├── ServerEvents.java       ← Login/Logout/Tick/BlockBreak
+│   └── ClientEvents.java       ← Touches, ESP, HUD
+└── network/
+    ├── NetworkHandler.java     ← Canal SimpleChannel (optionnel côté client)
+    └── packets/
+        ├── C2STogglePacket.java
+        ├── C2SInvSeePacket.java
+        ├── S2CStatePacket.java
+        ├── S2CViolationPacket.java
+        ├── S2CInvSeePacket.java
+        └── S2CTopLuckPacket.java</code></pre>
         </section>
+
+        <!-- Compatibilité & Licence -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="glass-card p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔮 Compatibilité</h2>
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr><th>Version MC</th><th>Loader</th><th>Statut</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1.20.1</td><td>Forge 47.x</td><td>✅ Supporté</td></tr>
+                            <tr><td>1.21.1</td><td>NeoForge</td><td>🔜 Prévu</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-[#30363d] pb-2">🤝 Contribuer</h2>
+                <ol class="list-decimal pl-6 space-y-1 text-gray-300 text-sm">
+                    <li><strong class="text-white">Fork</strong> le dépôt</li>
+                    <li>Crée une branche : <code>git checkout -b feature/ma-feature</code></li>
+                    <li>Commit : <code>git commit -m "feat: description"</code></li>
+                    <li>Push : <code>git push origin feature/ma-feature</code></li>
+                    <li>Ouvre une <strong class="text-white">Pull Request</strong></li>
+                </ol>
+            </section>
+
+            <section class="glass-card p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">📜 Licence</h2>
+                <p class="mb-4">Ce mod est distribué sous la licence <strong class="text-white">Polyform Noncommercial 1.0.0</strong>.</p>
+                
+                <h3 class="text-green-400 font-semibold mb-2">✅ Autorisé :</h3>
+                <ul class="list-disc pl-6 space-y-1 mb-6 text-gray-300 text-sm">
+                    <li>Usage personnel, sur ton propre serveur (gratuit)</li>
+                    <li>Modification et redistribution non-commerciale</li>
+                    <li>Usage dans un contexte associatif ou éducatif</li>
+                </ul>
+
+                <h3 class="text-red-400 font-semibold mb-2">❌ Interdit :</h3>
+                <ul class="list-disc pl-6 space-y-1 text-gray-300 text-sm">
+                    <li>Vendre le mod ou l'accès à celui-ci</li>
+                    <li>L'inclure dans un produit commercial</li>
+                    <li>L'utiliser dans un service payant</li>
+                </ul>
+                <p class="mt-4 text-sm text-gray-400">Voir <a href="https://github.com/Floodfield-Sudio/Admin-Tool/blob/main/LICENSE">LICENSE</a> pour les détails complets.</p>
+            </section>
+        </div>
 
     </main>
 
+    <!-- Footer -->
     <footer class="mt-8 pb-8 text-center text-gray-500 text-sm w-full max-w-4xl border-t border-[#30363d] pt-8">
-        <p>Ouvre une <a href="https://github.com/Floodfield-Sudio/Admin-Tool/issues">issue</a> pour les bugs.</p>
+        <p>Ouvre une <a href="https://github.com/Floodfield-Sudio/Admin-Tool/issues">issue</a> pour les bugs ou suggestions.</p>
         <p class="mt-2">Voir nos autres projets sur <a href="https://floodfield-sudio.github.io/FFS.index/">Notre Site Web</a></p>
         <p class="mt-4">&copy; 2022 Floodfield Studios.</p>
     </footer>
 
+    <!-- Script pour le bouton Copier -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('pre').forEach(pre => {
-                const codeElement = pre.querySelector('code') || pre;
+                const codeElement = pre.querySelector('code');
+                if (!codeElement) return;
+
                 const button = document.createElement('button');
                 button.className = 'copy-button';
-                button.innerHTML = 'Copier';
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg> Copier`;
                 
                 button.addEventListener('click', () => {
-                    const text = codeElement.innerText;
+                    const textToCopy = codeElement.innerText;
+                    
+                    // Méthode compatible pour copier (marche même dans les iframes sur certains navigateurs)
                     const textArea = document.createElement("textarea");
-                    textArea.value = text;
+                    textArea.value = textToCopy;
+                    textArea.style.position = "absolute";
+                    textArea.style.left = "-999999px";
                     document.body.appendChild(textArea);
                     textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
                     
-                    button.innerHTML = '<span class="text-green-400">Copié !</span>';
-                    setTimeout(() => { button.innerHTML = 'Copier'; }, 2000);
+                    try {
+                        document.execCommand('copy');
+                        
+                        // Changement d'état visuel au succès
+                        button.innerHTML = `
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg> <span class="text-green-400">Copié !</span>`;
+                        button.style.borderColor = '#3fb950';
+                        
+                        setTimeout(() => {
+                            button.innerHTML = `
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg> Copier`;
+                            button.style.borderColor = '';
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Erreur lors de la copie', err);
+                    }
+                    
+                    document.body.removeChild(textArea);
                 });
+                
                 pre.appendChild(button);
             });
         });
