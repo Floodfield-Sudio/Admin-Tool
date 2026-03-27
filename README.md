@@ -16,7 +16,7 @@ Le mod est **optionnel côté client** : les joueurs normaux n'ont pas besoin de
 | Feature | Description |
 |---|---|
 | **Ore X-Ray ESP** | Affiche les minerais à travers les blocs dans un rayon de 64 blocs, colorés par type |
-| **Entity ESP** | Affiche joueurs et mobs à travers les murs — bleu = joueur, rouge = hostile, vert = passif |
+| **Entity ESP** | Affiche les joueurs et mobs à travers les murs (bleu = joueur, rouge = hostile, vert = passif) |
 
 ### 👤 Outils Admin
 | Feature | Description |
@@ -30,36 +30,16 @@ Le mod est **optionnel côté client** : les joueurs normaux n'ont pas besoin de
 |---|---|---|
 | **Fly** | 80 ticks (4s) en l'air | Détecte le vol illégal |
 | **NoClip** | 3 détections consécutives | Détecte les déplacements dans les blocs solides |
-| **X-Ray** | 35 % ores / roche hôte | Détecte les taux de minage suspects |
+| **X-Ray** | 35% ores / roche hôte | Détecte les taux de minage suspects |
 
 ### 📊 Top Luck
 Classement des joueurs par ratio **minerais / roche hôte** (pierre, netherrack, end stone).
-- Détection automatique des ores de mods : Create, Mekanism, Thermal Series…
+- Détection automatique des ores de mods (Create, Mekanism, Thermal Series, etc.)
 - Ratio correct par dimension (Overworld / Nether / End)
-- Vue détaillée : barres par type de minerai + liste complète des blocs cassés
+- Vue détaillée : barres par type de minerai + liste de tous les blocs cassés
 
 ### 🎒 InvSee
 Inspection de l'inventaire complet d'un joueur en temps réel (lecture seule).
-
----
-
-## ⚠️ Problème connu — `clientFeatures` côté serveur
-
-> **Statut : en cours de correction**
-
-`AdminToolsState` accède à un champ client-only (`clientFeatures`) lors de son initialisation statique (`<clinit>`), ce qui provoque un crash serveur dès qu'un joueur se connecte.
-
-**Correctif à appliquer dans `AdminToolsState.java` :**
-```java
-// Avant (plante côté serveur)
-private static SomeType clientFeatures = Minecraft.getInstance().getSomething();
-
-// Après — protégé par vérification d'environnement
-private static SomeType clientFeatures = FMLEnvironment.dist.isClient()
-    ? Minecraft.getInstance().getSomething()
-    : null;
-```
-Ou déplacer le bloc client-only dans une classe annotée `@OnlyIn(Dist.CLIENT)`.
 
 ---
 
@@ -68,7 +48,7 @@ Ou déplacer le bloc client-only dans une classe annotée `@OnlyIn(Dist.CLIENT)`
 ### Panel admin — touche `K`
 Ouvre un panel avec 3 onglets :
 - **Features** — toggles pour activer/désactiver chaque fonctionnalité
-- **Joueurs** — liste des joueurs en ligne avec boutons TP / InvSee / Check
+- **Joueurs** — liste des joueurs en ligne, avec boutons TP / InvSee / Check
 - **Violations** — log scrollable des alertes anti-cheat
 
 ### Commandes `/at`
@@ -98,7 +78,7 @@ Ouvre un panel avec 3 onglets :
 2. Redémarrer le serveur
 3. **Les joueurs n'ont pas besoin d'installer le mod** pour se connecter
 
-### Admin (optionnel — pour le panel et les ESP)
+### Admin (optionnel, pour panel et ESP)
 1. Copier le même `.jar` dans le dossier `mods/` de son client Forge
 2. Se connecter au serveur — le panel `[K]` et les ESP sont disponibles
 
@@ -106,20 +86,19 @@ Ouvre un panel avec 3 onglets :
 
 ## 🔨 Compilation
 
-**Prérequis :** Java 17, Gradle 8.x
+Prérequis : **Java 17**, **Gradle 8.x**
 
 ```bash
-git clone https://github.com/Floodfield-Sudio/Admin-Tool.git
-cd Admin-Tool
+git clone https://github.com/Floodfield-Sudio/admintools.git
+cd admintools
 ./gradlew build
 # Le .jar se trouve dans build/libs/
 ```
 
-**Avec DevStudio Pro :**
-1. Ouvrir le dossier `Admin-Tool/` comme projet
-2. Onglet ⛏ Minecraft → sélectionner **Forge 1.20.1**
-3. Si `gradlew` est absent : cliquer **⬇ Télécharger MDK** une fois, puis **🔨 Build** — le wrapper est injecté automatiquement
-4. Le `.jar` apparaît dans `build/libs/`
+Ou utiliser **DevStudio Pro** :
+1. Ouvrir le dossier `admintools/` comme projet
+2. Onglet ⛏ Minecraft → Forge 1.20.1
+3. Cliquer 🔨 Build
 
 ---
 
@@ -127,31 +106,31 @@ cd Admin-Tool
 
 ```
 src/main/java/com/admintools/
-├── AdminToolsMod.java            ← Entrée principale @Mod
-├── AdminFeature.java             ← Enum des 8 features
-├── AdminToolsState.java          ← État serveur (features, vanish, noclip) ⚠️ voir bug ci-dessus
-├── TopLuckEntry.java             ← DTO neutre pour le classement
+├── AdminToolsMod.java          ← Entrée principale @Mod
+├── AdminFeature.java           ← Enum des 8 features
+├── AdminToolsState.java        ← État serveur (features, vanish, noclip)
+├── TopLuckEntry.java           ← DTO neutre pour le classement
 ├── client/
-│   ├── AdminPanel.java           ← GUI panel admin (touche K)
-│   ├── ClientAdminState.java     ← État client (features actives)
-│   ├── ClientPacketHandler.java  ← Proxy pour ouvrir les écrans depuis les packets
-│   ├── InvSeeScreen.java         ← Écran inventaire (lecture seule)
-│   ├── TopLuckScreen.java        ← Écran classement Top Luck
-│   ├── VanishHUD.java            ← Indicateur [VANISH] clignotant
+│   ├── AdminPanel.java         ← GUI panel admin (touche K)
+│   ├── ClientAdminState.java   ← État client (features actives)
+│   ├── ClientPacketHandler.java← Proxy pour ouvrir les écrans depuis les packets
+│   ├── InvSeeScreen.java       ← Écran inventaire (lecture seule)
+│   ├── TopLuckScreen.java      ← Écran classement Top Luck
+│   ├── VanishHUD.java          ← Indicateur [VANISH] clignotant
 │   └── render/
-│       ├── ESPRenderer.java      ← Rendu ore/entity ESP (through walls)
-│       └── ESPRenderType.java    ← RenderType sans depth test
+│       ├── ESPRenderer.java    ← Rendu ore/entity ESP (through walls)
+│       └── ESPRenderType.java  ← RenderType sans depth test
 ├── server/
-│   ├── AdminCommand.java         ← Commande /at
-│   ├── TopLuckTracker.java       ← Suivi ratio minerais par joueur
+│   ├── AdminCommand.java       ← Commande /at
+│   ├── TopLuckTracker.java     ← Suivi ratio minerais par joueur
 │   └── anticheat/
 │       ├── AntiCheatManager.java ← Détections Fly/NoClip/XRay
 │       └── ViolationType.java
 ├── events/
-│   ├── ServerEvents.java         ← Login/Logout/Tick/BlockBreak
-│   └── ClientEvents.java         ← Touches, ESP, HUD
+│   ├── ServerEvents.java       ← Login/Logout/Tick/BlockBreak
+│   └── ClientEvents.java       ← Touches, ESP, HUD
 └── network/
-    ├── NetworkHandler.java       ← Canal SimpleChannel (optionnel côté client)
+    ├── NetworkHandler.java     ← Canal SimpleChannel (optionnel côté client)
     └── packets/
         ├── C2STogglePacket.java
         ├── C2SInvSeePacket.java
@@ -190,8 +169,15 @@ Merci de respecter le style de code existant et d'inclure une description claire
 
 Ce mod est distribué sous la licence **Polyform Noncommercial 1.0.0**.
 
-✅ **Autorisé :** usage personnel, sur ton propre serveur, modification et redistribution non-commerciale, usage associatif ou éducatif  
-❌ **Interdit :** vendre le mod ou l'accès à celui-ci, l'inclure dans un produit commercial, l'utiliser dans un service payant
+✅ **Autorisé :**
+- Usage personnel, sur ton propre serveur (gratuit)
+- Modification et redistribution non-commerciale
+- Usage dans un contexte associatif ou éducatif
+
+❌ **Interdit :**
+- Vendre le mod ou l'accès à celui-ci
+- L'inclure dans un produit commercial
+- L'utiliser dans un service payant
 
 Voir [LICENSE](LICENSE) pour les détails complets.
 
@@ -199,5 +185,5 @@ Voir [LICENSE](LICENSE) pour les détails complets.
 
 ## 📬 Contact
 
-Ouvre une [issue](../../issues) pour les bugs ou suggestions.  
-Voir nos autres projets sur [Notre Site Web](https://floodfield-sudio.github.io/FFS.index/)
+Ouvre une [issue](../../issues) pour les bugs ou suggestions.<br>
+Voire nos autre projets [Notre Site Web](https://floodfield-sudio.github.io/FFS.index/)
