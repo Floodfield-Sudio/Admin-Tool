@@ -1,9 +1,10 @@
-# [🛡 AdminTools — Anti-Cheat & Admin Panel](https://github.com/Floodfield-Sudio/Admin-Tool)
+# 🛡 AdminTools — Anti-Cheat & Admin Panel
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green)](https://minecraft.net)
 [![Forge](https://img.shields.io/badge/Forge-47.x-orange)](https://minecraftforge.net)
 [![Java](https://img.shields.io/badge/Java-17-blue)](https://adoptium.net)
 [![License](https://img.shields.io/badge/License-Noncommercial-red)](LICENSE)
+[![Client Optional](https://img.shields.io/badge/Client-Optionnel-blue)](#installation)
 
 Mod Forge 1.20.1 destiné aux **administrateurs de serveurs Minecraft**.  
 Le mod est **optionnel côté client** : les joueurs normaux n'ont pas besoin de l'installer.
@@ -12,55 +13,98 @@ Le mod est **optionnel côté client** : les joueurs normaux n'ont pas besoin de
 
 ## ✨ Fonctionnalités
 
-### 🔭 ESP (client admin uniquement)
-| Feature | Description |
+### 🔭 Ore X-Ray ESP
+- Affiche les minerais à travers les blocs avec des boîtes colorées
+- **Rayon configurable** : de 8 à 128 blocs (défaut : 64), par pas de 8
+- **Toggle par type de minerai** : activer/masquer individuellement chaque ore
+- **Couleurs distinctes automatiques** pour chaque mod :
+  - Ores vanilla : couleurs fixes (diamant = cyan, or = jaune, redstone = rouge…)
+  - Ores moddés (Create, Mekanism, Thermal…) : couleurs générées par rotation HSV (golden angle 137.5°) — chaque ore a une teinte unique et saturée, jamais le même violet générique
+- Accessible via **⚙ Config X-Ray** dans le panel `[K]`
+
+| Ore vanilla | Couleur |
 |---|---|
-| **Ore X-Ray ESP** | Affiche les minerais à travers les blocs dans un rayon de 64 blocs, colorés par type |
-| **Entity ESP** | Affiche les joueurs et mobs à travers les murs (bleu = joueur, rouge = hostile, vert = passif) |
+| Diamant | 🔵 Cyan `#00E5FF` |
+| Émeraude | 🟢 Vert vif `#00FF40` |
+| Or + Or Nether | 🟡 Jaune `#FFD700` |
+| Fer | 🟤 Brun `#CC9966` |
+| Ancient Debris | 🟠 Orange foncé `#CC4811` |
+| Redstone | 🔴 Rouge `#FF1414` |
+| Lapis | 💙 Bleu roi `#2244EE` |
+| Charbon | ⚫ Gris `#474747` |
+| Cuivre | 🟤 Cuivré `#D18030` |
+| Quartz (Nether) | ⬜ Blanc `#F3F3F3` |
+
+### 👁 Entity ESP
+Affiche les entités vivantes à travers les murs :
+- 💙 Bleu — Joueurs
+- 🔴 Rouge — Mobs hostiles
+- 💚 Vert — Mobs passifs
 
 ### 👤 Outils Admin
 | Feature | Description |
 |---|---|
-| **Vanish** | Rend l'admin invisible + indicateur `[VANISH]` clignotant sur son écran |
+| **Vanish** | Invisibilité + indicateur `[VANISH]` clignotant sur l'écran de l'admin |
 | **NoClip Admin** | Passe en spectateur (noclip natif), restaure le mode précédent à la désactivation |
-| **Alertes Anti-Cheat** | Reçoit les notifications de violation en temps réel |
+| **Alertes Anti-Cheat** | Reçoit les violations en temps réel dans le panel et le chat |
 
 ### 🚨 Détections Anti-Cheat (serveur)
 | Détection | Seuil | Description |
 |---|---|---|
-| **Fly** | 80 ticks (4s) en l'air | Détecte le vol illégal |
-| **NoClip** | 3 détections consécutives | Détecte les déplacements dans les blocs solides |
-| **X-Ray** | 35% ores / roche hôte | Détecte les taux de minage suspects |
+| **Fly** | 80 ticks (4 s) en l'air | Vol illégal — ignorer si elytra/eau/échelle |
+| **NoClip** | 3 ticks consécutifs dans un bloc solide | Déplacement dans la matière |
+| **X-Ray** | ≥ 35 % ores / roche hôte | Taux de minage suspect |
 
 ### 📊 Top Luck
-Classement des joueurs par ratio **minerais / roche hôte** (pierre, netherrack, end stone).
-- Détection automatique des ores de mods (Create, Mekanism, Thermal Series, etc.)
-- Ratio correct par dimension (Overworld / Nether / End)
-- Vue détaillée : barres par type de minerai + liste de tous les blocs cassés
+Classement des joueurs par ratio **minerais / roche hôte** — beaucoup plus précis que ores/total car insensible au bois/terre creusés.
+
+- **Roche hôte par dimension** :
+  - Overworld → pierre, deepslate, granite, diorite, andesite, tuff, calcite…
+  - Nether → netherrack, basalt, blackstone, soul sand…
+  - End → end stone, end stone bricks
+- **Détection automatique des ores de mods** (Create, Mekanism, Thermal Series, etc.)
+- **Onglet Ores** : barres de progression par groupe de minerai (% / roche hôte)
+- **Onglet Tous les blocs** : liste complète de tous les blocs cassés par le joueur, triée par count, avec code couleur (ores = vert, roche = gris, reste = bleu)
 
 ### 🎒 InvSee
-Inspection de l'inventaire complet d'un joueur en temps réel (lecture seule).
+Inspection de l'inventaire complet d'un joueur en lecture seule :
+- 36 slots de l'inventaire principal
+- 4 slots d'armure
+- Slot hors-main (offhand)
+- Tooltip au survol de chaque item
 
 ---
 
 ## 🎮 Utilisation
 
 ### Panel admin — touche `K`
-Ouvre un panel avec 3 onglets :
-- **Features** — toggles pour activer/désactiver chaque fonctionnalité
-- **Joueurs** — liste des joueurs en ligne, avec boutons TP / InvSee / Check
-- **Violations** — log scrollable des alertes anti-cheat
+
+**3 onglets :**
+
+- **Features** — 8 toggles ON/OFF + bouton **⚙ Config X-Ray**
+- **Joueurs** — liste des joueurs en ligne, clic pour sélectionner puis :
+  - **✈ TP** → se téléporter au joueur
+  - **🎒 InvSee** → ouvrir l'inventaire (GUI)
+  - **🔍 Check** → infos rapides dans le chat
+- **Violations** — log scrollable des alertes anti-cheat (couleur par type : rouge = Fly, orange = NoClip, jaune = X-Ray)
+
+### ⚙ Config X-Ray ESP (depuis le panel)
+
+- **Rayon** : boutons `−` / `+` pour ajuster de 8 à 128 blocs
+- **Grille des ores** : clic sur un ore pour l'activer/masquer
+- Carré coloré = visible, carré barré = masqué
+- Boutons **Tout activer**, **Tout masquer**, **Reset**
 
 ### Commandes `/at`
 ```
 /at                               → Statut de ses features
-/at status [joueur]               → Statut d'un joueur op
+/at status [joueur]               → Statut d'un admin (soi ou autre)
 /at toggle <feature> [joueur]     → Basculer une feature
 /at on|off <feature> [joueur]     → Forcer une feature
 /at tp <joueur>                   → Se téléporter au joueur
 /at invsee <joueur>               → Voir l'inventaire (GUI)
 /at topluck [reset <joueur>]      → Classement minerais (GUI)
-/at check <joueur>                → Infos rapides (mode, pos, ping)
+/at check <joueur>                → Infos rapides (mode, pos, vol, ping)
 /at help                          → Aide complète
 ```
 
@@ -73,14 +117,18 @@ Ouvre un panel avec 3 onglets :
 
 ## 📦 Installation
 
-### Serveur
-1. Copier le `.jar` dans le dossier `mods/` du serveur
-2. Redémarrer le serveur
-3. **Les joueurs n'ont pas besoin d'installer le mod** pour se connecter
+### Serveur (obligatoire)
+1. Copier `admintools-1.0.0.jar` dans le dossier `mods/` du serveur
+2. Redémarrer
 
-### Admin (optionnel, pour panel et ESP)
-1. Copier le même `.jar` dans le dossier `mods/` de son client Forge
-2. Se connecter au serveur — le panel `[K]` et les ESP sont disponibles
+### Joueurs normaux
+Rien à faire. **Aucune installation requise** pour se connecter.
+
+### Admins (optionnel, pour panel et ESP)
+1. Copier le même `.jar` dans `mods/` de son client Forge
+2. Se connecter — le panel `[K]`, l'ESP et l'InvSee sont disponibles
+
+> Si un admin n'a pas le mod côté client, il peut quand même utiliser `/at` dans le chat pour TP, InvSee, TopLuck, etc.
 
 ---
 
@@ -89,55 +137,51 @@ Ouvre un panel avec 3 onglets :
 Prérequis : **Java 17**, **Gradle 8.x**
 
 ```bash
-git clone https://github.com/Floodfield-Sudio/admintools.git
-cd admintools
+git clone https://github.com/Floodfield-Sudio/Admin-Tool.git
+cd Admin-Tool
 ./gradlew build
-# Le .jar se trouve dans build/libs/
+# Le .jar apparaît dans build/libs/
 ```
 
-Ou utiliser **DevStudio Pro** :
-1. Ouvrir le dossier `admintools/` comme projet
+Ou avec **DevStudio Pro** :
+1. Ouvrir le dossier comme projet
 2. Onglet ⛏ Minecraft → Forge 1.20.1
-3. Cliquer 🔨 Build
+3. Cliquer **🔨 Build**
 
 ---
 
-## 🏗 Structure du code
+## 🏗 Structure du projet
 
 ```
 src/main/java/com/admintools/
-├── AdminToolsMod.java          ← Entrée principale @Mod
-├── AdminFeature.java           ← Enum des 8 features
-├── AdminToolsState.java        ← État serveur (features, vanish, noclip)
-├── TopLuckEntry.java           ← DTO neutre pour le classement
+├── AdminToolsMod.java              ← @Mod principal
+├── AdminFeature.java               ← Enum des 8 features
+├── AdminToolsState.java            ← État serveur
+├── TopLuckEntry.java               ← DTO classement Top Luck
 ├── client/
-│   ├── AdminPanel.java         ← GUI panel admin (touche K)
-│   ├── ClientAdminState.java   ← État client (features actives)
-│   ├── ClientPacketHandler.java← Proxy pour ouvrir les écrans depuis les packets
-│   ├── InvSeeScreen.java       ← Écran inventaire (lecture seule)
-│   ├── TopLuckScreen.java      ← Écran classement Top Luck
-│   ├── VanishHUD.java          ← Indicateur [VANISH] clignotant
+│   ├── AdminPanel.java             ← GUI panel (touche K) — 3 onglets
+│   ├── OreESPSettingsScreen.java   ← GUI config X-Ray ESP
+│   ├── ClientAdminState.java       ← État client
+│   ├── ClientPacketHandler.java    ← Proxy ouverture écrans
+│   ├── InvSeeScreen.java           ← Écran inventaire
+│   ├── TopLuckScreen.java          ← Écran Top Luck
+│   ├── VanishHUD.java              ← Indicateur [VANISH]
 │   └── render/
-│       ├── ESPRenderer.java    ← Rendu ore/entity ESP (through walls)
-│       └── ESPRenderType.java  ← RenderType sans depth test
+│       ├── ESPRenderer.java        ← Rendu ore/entity ESP
+│       ├── ESPRenderType.java      ← RenderType sans depth test
+│       └── OreESPSettings.java     ← Réglages rayon + toggle/couleur par ore
 ├── server/
-│   ├── AdminCommand.java       ← Commande /at
-│   ├── TopLuckTracker.java     ← Suivi ratio minerais par joueur
+│   ├── AdminCommand.java           ← Commande /at
+│   ├── TopLuckTracker.java         ← Ratio minerais/roche hôte
 │   └── anticheat/
-│       ├── AntiCheatManager.java ← Détections Fly/NoClip/XRay
+│       ├── AntiCheatManager.java
 │       └── ViolationType.java
 ├── events/
-│   ├── ServerEvents.java       ← Login/Logout/Tick/BlockBreak
-│   └── ClientEvents.java       ← Touches, ESP, HUD
+│   ├── ServerEvents.java
+│   └── ClientEvents.java
 └── network/
-    ├── NetworkHandler.java     ← Canal SimpleChannel (optionnel côté client)
-    └── packets/
-        ├── C2STogglePacket.java
-        ├── C2SInvSeePacket.java
-        ├── S2CStatePacket.java
-        ├── S2CViolationPacket.java
-        ├── S2CInvSeePacket.java
-        └── S2CTopLuckPacket.java
+    ├── NetworkHandler.java         ← Canal optionnel côté client
+    └── packets/                    ← 6 packets C2S/S2C
 ```
 
 ---
@@ -146,44 +190,23 @@ src/main/java/com/admintools/
 
 | Version MC | Loader | Statut |
 |---|---|---|
-| 1.20.1 | Forge 47.x | ✅ Supporté |
+| 1.20.1 | Forge 47.x | ✅ Stable |
 | 1.21.1 | NeoForge | 🔜 Prévu |
 
 ---
 
 ## 🤝 Contribuer
 
-Les contributions sont les bienvenues !
-
-1. **Fork** le dépôt
-2. Crée une branche : `git checkout -b feature/ma-feature`
-3. Commit : `git commit -m "feat: description"`
-4. Push : `git push origin feature/ma-feature`
-5. Ouvre une **Pull Request**
-
-Merci de respecter le style de code existant et d'inclure une description claire des changements.
+1. Fork → branche `feat/ma-feature` → PR
+2. Lire [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
 ## 📜 Licence
 
-Ce mod est distribué sous la licence **Polyform Noncommercial 1.0.0**.
+**Polyform Noncommercial 1.0.0** — usage non-commercial uniquement.
 
-✅ **Autorisé :**
-- Usage personnel, sur ton propre serveur (gratuit)
-- Modification et redistribution non-commerciale
-- Usage dans un contexte associatif ou éducatif
+✅ Usage perso, serveur communautaire, modification, redistribution non-commerciale  
+❌ Vente, service payant, produit commercial
 
-❌ **Interdit :**
-- Vendre le mod ou l'accès à celui-ci
-- L'inclure dans un produit commercial
-- L'utiliser dans un service payant
-
-Voir [LICENSE](LICENSE) pour les détails complets.
-
----
-
-## 📬 Contact
-
-Ouvre une [issue](../../issues) pour les bugs ou suggestions.<br>
-Voire nos autre projets [Notre Site Web](https://floodfield-sudio.github.io/FFS.index/)
+Voir [LICENSE](LICENSE) pour les détails.
