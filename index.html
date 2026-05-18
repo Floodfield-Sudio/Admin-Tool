@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
-<html lang="fr">
+
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdminTools — Anti-Cheat & Admin Panel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AdminTools — Anti-Cheat &amp; Admin Panel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
         :root {
             --bg-color: #0d1117;
             --card-bg: #161b22;
@@ -107,192 +109,191 @@
             background-color: var(--border);
             color: var(--text-primary);
         }
+    
+        .lang-btn {
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border-radius: 9999px;
+            padding: 0.45rem 0.8rem;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .lang-btn.active {
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 0 0 1px rgba(88,166,255,0.18) inset;
+        }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center p-6 md:p-12">
-
-    <!-- Navigation -->
-    <nav class="w-full max-w-4xl mb-8">
-        <a href="https://floodfield-sudio.github.io/FFS.index/" class="flex items-center text-sm font-semibold">
-            <span class="mr-2">←</span> Retour à l'accueil
-        </a>
-    </nav>
-
-    <!-- Header -->
-    <header class="w-full max-w-4xl mb-12 border-b border-[#30363d] pb-8">
-        <h1 class="text-4xl font-bold text-white mb-4 flex items-center">
-            🛡 <a href="https://github.com/Floodfield-Sudio/Admin-Tool" class="ml-3 hover:text-[#58a6ff]">AdminTools — Anti-Cheat & Admin Panel</a>
-        </h1>
-        
-        <div class="flex flex-wrap gap-2 mb-6">
-            <a href="https://minecraft.net" target="_blank"><img src="https://img.shields.io/badge/Minecraft-1.20.1-green" alt="Minecraft"></a>
-            <a href="https://minecraftforge.net" target="_blank"><img src="https://img.shields.io/badge/Forge-47.x-orange" alt="Forge"></a>
-            <a href="https://adoptium.net" target="_blank"><img src="https://img.shields.io/badge/Java-17-blue" alt="Java"></a>
-            <a href="https://github.com/Floodfield-Sudio/Admin-Tool/blob/main/LICENSE" target="_blank"><img src="https://img.shields.io/badge/License-Noncommercial-red" alt="License"></a>
-        </div>
-
-        <p class="text-lg text-gray-300">
-            Mod Forge 1.20.1 destiné aux <strong class="text-white">administrateurs de serveurs Minecraft</strong>.<br>
-            Le mod est <strong class="text-white">optionnel côté client</strong> : les joueurs normaux n'ont pas besoin de l'installer.
+<!-- Navigation -->
+<nav class="w-full max-w-4xl mb-8 flex items-center justify-between gap-4">
+<a class="flex items-center text-sm font-semibold" href="https://floodfield-sudio.github.io/FFS.index/">
+<span class="mr-2">←</span> <span data-i18n="back_home">Back to home</span>
+</a>
+<div class="flex gap-2">
+<button class="lang-btn" id="btn-en" type="button">EN</button>
+<button class="lang-btn" id="btn-fr" type="button">FR</button>
+</div>
+</nav>
+<!-- Header -->
+<header class="w-full max-w-4xl mb-12 border-b border-[#30363d] pb-8">
+<h1 class="text-4xl font-bold text-white mb-4 flex items-center">
+            🛡 <a class="ml-3 hover:text-[#58a6ff]" href="https://github.com/Floodfield-Sudio/Admin-Tool">AdminTools — Anti-Cheat &amp; Admin Panel</a>
+</h1>
+<div class="flex flex-wrap gap-2 mb-6">
+<a href="https://minecraft.net" target="_blank"><img alt="Minecraft" src="https://img.shields.io/badge/Minecraft-1.20.1-green"/></a>
+<a href="https://minecraftforge.net" target="_blank"><img alt="Forge" src="https://img.shields.io/badge/Forge-47.x-orange"/></a>
+<a href="https://adoptium.net" target="_blank"><img alt="Java" src="https://img.shields.io/badge/Java-17-blue"/></a>
+<a href="https://github.com/Floodfield-Sudio/Admin-Tool/blob/main/LICENSE" target="_blank"><img alt="License" src="https://img.shields.io/badge/License-Noncommercial-red"/></a>
+</div>
+<p class="text-lg text-gray-300">
+            Forge 1.20.1 mod for <strong class="text-white">Minecraft server administrators</strong>.<br/>
+            The mod is <strong class="text-white">optional on the client side</strong>: normal players do not need to install it.
         </p>
-    </header>
-
-    <!-- Main Content -->
-    <main class="w-full max-w-4xl space-y-8">
-        
-        <!-- Fonctionnalités -->
-        <section class="glass-card p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">✨ Fonctionnalités</h2>
-            
-            <h3 class="text-xl font-semibold text-white mt-6 mb-3">🔭 ESP (client admin uniquement)</h3>
-            <div class="overflow-x-auto">
-                <table>
-                    <thead>
-                        <tr><th>Feature</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong class="text-white">Ore X-Ray ESP</strong></td><td>Affiche les minerais à travers les blocs dans un rayon de 64 blocs, colorés par type</td></tr>
-                        <tr><td><strong class="text-white">Entity ESP</strong></td><td>Affiche les joueurs et mobs à travers les murs (bleu = joueur, rouge = hostile, vert = passif)</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="text-xl font-semibold text-white mt-8 mb-3">👤 Outils Admin</h3>
-            <div class="overflow-x-auto">
-                <table>
-                    <thead>
-                        <tr><th>Feature</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong class="text-white">Vanish</strong></td><td>Rend l'admin invisible + indicateur <code>[VANISH]</code> clignotant sur son écran</td></tr>
-                        <tr><td><strong class="text-white">NoClip Admin</strong></td><td>Passe en spectateur (noclip natif), restaure le mode précédent à la désactivation</td></tr>
-                        <tr><td><strong class="text-white">Alertes Anti-Cheat</strong></td><td>Reçoit les notifications de violation en temps réel</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="text-xl font-semibold text-white mt-8 mb-3">🚨 Détections Anti-Cheat (serveur)</h3>
-            <div class="overflow-x-auto">
-                <table>
-                    <thead>
-                        <tr><th>Détection</th><th>Seuil</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong class="text-white">Fly</strong></td><td>80 ticks (4s) en l'air</td><td>Détecte le vol illégal</td></tr>
-                        <tr><td><strong class="text-white">NoClip</strong></td><td>3 détections consécutives</td><td>Détecte les déplacements dans les blocs solides</td></tr>
-                        <tr><td><strong class="text-white">X-Ray</strong></td><td>35% ores / roche hôte</td><td>Détecte les taux de minage suspects</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="text-xl font-semibold text-white mt-8 mb-2">📊 Top Luck</h3>
-            <p class="mb-2">Classement des joueurs par ratio <strong class="text-white">minerais / roche hôte</strong> (pierre, netherrack, end stone).</p>
-            <ul class="list-disc pl-6 space-y-1 text-gray-300">
-                <li>Détection automatique des ores de mods (Create, Mekanism, Thermal Series, etc.)</li>
-                <li>Ratio correct par dimension (Overworld / Nether / End)</li>
-                <li>Vue détaillée : barres par type de minerai + liste de tous les blocs cassés</li>
-            </ul>
-
-            <h3 class="text-xl font-semibold text-white mt-8 mb-2">🎒 InvSee</h3>
-            <p>Inspection de l'inventaire complet d'un joueur en temps réel (lecture seule).</p>
-        </section>
-
-        <!-- Utilisation -->
-        <section class="glass-card p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🎮 Utilisation</h2>
-            
-            <h3 class="text-xl font-semibold text-white mb-2">Panel admin — touche <code>K</code></h3>
-            <p class="mb-2">Ouvre un panel avec 3 onglets :</p>
-            <ul class="list-disc pl-6 space-y-1 mb-6 text-gray-300">
-                <li><strong class="text-white">Features</strong> — toggles pour activer/désactiver chaque fonctionnalité</li>
-                <li><strong class="text-white">Joueurs</strong> — liste des joueurs en ligne, avec boutons TP / InvSee / Check</li>
-                <li><strong class="text-white">Violations</strong> — log scrollable des alertes anti-cheat</li>
-            </ul>
-
-            <h3 class="text-xl font-semibold text-white mt-6 mb-2">Commandes <code>/at</code></h3>
-<pre><code>/at                               → Statut de ses features
-/at status [joueur]               → Statut d'un joueur op
-/at toggle &lt;feature&gt; [joueur]     → Basculer une feature
-/at on|off &lt;feature&gt; [joueur]     → Forcer une feature
-/at tp &lt;joueur&gt;                   → Se téléporter au joueur
-/at invsee &lt;joueur&gt;               → Voir l'inventaire (GUI)
-/at topluck [reset &lt;joueur&gt;]      → Classement minerais (GUI)
-/at check &lt;joueur&gt;                → Infos rapides (mode, pos, ping)
-/at help                          → Aide complète</code></pre>
-            
-            <p class="mt-4"><strong class="text-white">Noms de features :</strong><br>
-            <code>ore_esp</code> · <code>entity_esp</code> · <code>vanish</code> · <code>noclip</code> · <code>alerts</code> · <code>fly_detect</code> · <code>noclip_detect</code> · <code>xray_detect</code></p>
-
-            <div class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r mt-6">
-                <p class="text-yellow-200 m-0">⚠️ Requiert <strong class="text-yellow-100">op level 2</strong> minimum.</p>
-            </div>
-        </section>
-
-        <!-- Installation & Compilation -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <section class="glass-card p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">📦 Installation</h2>
-                
-                <h3 class="text-lg font-semibold text-white mb-2">Serveur</h3>
-                <ol class="list-decimal pl-6 space-y-1 mb-6 text-gray-300">
-                    <li>Copier le <code>.jar</code> dans le dossier <code>mods/</code> du serveur</li>
-                    <li>Redémarrer le serveur</li>
-                    <li><strong class="text-white">Les joueurs n'ont pas besoin d'installer le mod</strong> pour se connecter</li>
-                </ol>
-
-                <h3 class="text-lg font-semibold text-white mb-2">Admin (optionnel)</h3>
-                <ol class="list-decimal pl-6 space-y-1 text-gray-300">
-                    <li>Copier le même <code>.jar</code> dans le dossier <code>mods/</code> de son client Forge</li>
-                    <li>Se connecter au serveur — le panel <code>[K]</code> et les ESP sont disponibles</li>
-                </ol>
-            </section>
-
-            <section class="glass-card p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔨 Compilation</h2>
-                <p class="mb-4">Prérequis : <strong class="text-white">Java 17</strong>, <strong class="text-white">Gradle 8.x</strong></p>
+</header>
+<!-- Main Content -->
+<main class="w-full max-w-4xl space-y-8">
+ Features 
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">✨ Features</h2>
+<h3 class="text-xl font-semibold text-white mt-6 mb-3">🔭 ESP (admin client only)</h3>
+<div class="overflow-x-auto">
+<table>
+<thead>
+<tr><th>Feature</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><strong class="text-white">Ore X-Ray ESP</strong></td><td>Shows ores through blocks within a 64-block radius, colored by type</td></tr>
+<tr><td><strong class="text-white">Entity ESP</strong></td><td>Shows players and mobs through walls (blue = player, red = hostile, green = passive)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="text-xl font-semibold text-white mt-8 mb-3">👤 Admin Tools</h3>
+<div class="overflow-x-auto">
+<table>
+<thead>
+<tr><th>Feature</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><strong class="text-white">Vanish</strong></td><td>Makes the admin invisible + indicator <code>[VANISH]</code> blinking on their screen</td></tr>
+<tr><td><strong class="text-white">NoClip Admin</strong></td><td>Switches to spectator mode (native noclip), restores the previous mode when disabled</td></tr>
+<tr><td><strong class="text-white">Anti-Cheat Alerts</strong></td><td>Receives violation notifications in real time</td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="text-xl font-semibold text-white mt-8 mb-3">🚨 Anti-Cheat detections (server)</h3>
+<div class="overflow-x-auto">
+<table>
+<thead>
+<tr><th>Detection</th><th>Threshold</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><strong class="text-white">Fly</strong></td><td>80 ticks (4s) in the air</td><td>Detects illegal flying</td></tr>
+<tr><td><strong class="text-white">NoClip</strong></td><td>3 consecutive detections</td><td>Detects movement inside solid blocks</td></tr>
+<tr><td><strong class="text-white">X-Ray</strong></td><td>35% ores / host rock</td><td>Detects suspicious mining rates</td></tr>
+</tbody>
+</table>
+</div>
+<h3 class="text-xl font-semibold text-white mt-8 mb-2">📊 Top Luck</h3>
+<p class="mb-2">Player ranking by ratio <strong class="text-white">ores / host rock</strong> (stone, netherrack, end stone).</p>
+<ul class="list-disc pl-6 space-y-1 text-gray-300">
+<li>Automatic detection of mod ores (Create, Mekanism, Thermal Series, etc.)</li>
+<li>Correct ratio by dimension (Overworld / Nether / End)</li>
+<li>Detailed view: bars by ore type + list of all broken blocks</li>
+</ul>
+<h3 class="text-xl font-semibold text-white mt-8 mb-2">🎒 InvSee</h3>
+<p>View a player's full inventory in real time (read-only).</p>
+</section>
+ Usage 
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🎮 Usage</h2>
+<h3 class="text-xl font-semibold text-white mb-2">Admin panel — key <code>K</code></h3>
+<p class="mb-2">Opens a panel with 3 tabs:</p>
+<ul class="list-disc pl-6 space-y-1 mb-6 text-gray-300">
+<li><strong class="text-white">Features</strong> — toggles to enable/disable each feature</li>
+<li><strong class="text-white">Players</strong> — list of online players, with TP / InvSee / Check buttons</li>
+<li><strong class="text-white">Violations</strong> — scrollable log of anti-cheat alerts</li>
+</ul>
+<h3 class="text-xl font-semibold text-white mt-6 mb-2">Commands <code>/at</code></h3>
+<pre><code>/at                               → Shows your feature status
+/at status [joueur]               → Shows an operator player's status
+/at toggle &lt;feature&gt; [joueur]     → Toggle a feature
+/at on|off &lt;feature&gt; [joueur]     → Force a feature
+/at tp &lt;joueur&gt;                   → Teleport to the player
+/at invsee &lt;joueur&gt;               → View the inventory (GUI)
+/at topluck [reset &lt;joueur&gt;]      → Ore ranking (GUI)
+/at check &lt;joueur&gt;                → Quick info (mode, position, ping)
+/at help                          → Full help</code></pre>
+<p class="mt-4"><strong class="text-white">Feature names:</strong><br/>
+<code>ore_esp</code> · <code>entity_esp</code> · <code>vanish</code> · <code>noclip</code> · <code>alerts</code> · <code>fly_detect</code> · <code>noclip_detect</code> · <code>xray_detect</code></p>
+<div class="border-l-4 border-yellow-500 bg-yellow-900/20 p-4 rounded-r mt-6">
+<p class="text-yellow-200 m-0">⚠️ Requires <strong class="text-yellow-100">op level 2</strong> minimum.</p>
+</div>
+</section>
+ Installation &amp; Build 
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">📦 Installation</h2>
+<h3 class="text-lg font-semibold text-white mb-2">Server</h3>
+<ol class="list-decimal pl-6 space-y-1 mb-6 text-gray-300">
+<li>Copy the <code>.jar</code> into the <code>mods/</code> server</li>
+<li>Restart the server</li>
+<li><strong class="text-white">Players do not need to install the mod</strong> to join</li>
+</ol>
+<h3 class="text-lg font-semibold text-white mb-2">Admin (optional)</h3>
+<ol class="list-decimal pl-6 space-y-1 text-gray-300">
+<li>Copy the même <code>.jar</code> into the <code>mods/</code> to their Forge client</li>
+<li>Join the server — the panel <code>[K]</code> and ESP features are available</li>
+</ol>
+</section>
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔨 Build</h2>
+<p class="mb-4">Requirements: <strong class="text-white">Java 17</strong>, <strong class="text-white">Gradle 8.x</strong></p>
 <pre><code>git clone https://github.com/Floodfield-Sudio/admintools.git
 cd admintools
 ./gradlew build
 # Le .jar se trouve dans build/libs/</code></pre>
-                
-                <h3 class="text-lg font-semibold text-white mt-4 mb-2">Ou utiliser DevStudio Pro :</h3>
-                <ol class="list-decimal pl-6 space-y-1 text-gray-300">
-                    <li>Ouvrir le dossier <code>admintools/</code> comme projet</li>
-                    <li>Onglet ⛏ Minecraft → Forge 1.20.1</li>
-                    <li>Cliquer 🔨 Build</li>
-                </ol>
-            </section>
-        </div>
-
-        <!-- Structure du Code -->
-        <section class="glass-card p-6 md:p-8">
-            <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🏗 Structure du code</h2>
+<h3 class="text-lg font-semibold text-white mt-4 mb-2">Or use DevStudio Pro:</h3>
+<ol class="list-decimal pl-6 space-y-1 text-gray-300">
+<li>Open the folder <code>admintools/</code> as a project</li>
+<li>Minecraft tab → Forge 1.20.1</li>
+<li>Click 🔨 Build</li>
+</ol>
+</section>
+</div>
+<!-- Structure du Code -->
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🏗 Code structure</h2>
 <pre><code>src/main/java/com/admintools/
-├── AdminToolsMod.java          ← Entrée principale @Mod
-├── AdminFeature.java           ← Enum des 8 features
-├── AdminToolsState.java        ← État serveur (features, vanish, noclip)
-├── TopLuckEntry.java           ← DTO neutre pour le classement
+├── AdminToolsMod.java          ← Main entry point @Mod
+├── AdminFeature.java           ← Enum of the 8 features
+├── AdminToolsState.java        ← Server state (features, vanish, noclip)
+├── TopLuckEntry.java           ← Neutral DTO for ranking
 ├── client/
-│   ├── AdminPanel.java         ← GUI panel admin (touche K)
-│   ├── ClientAdminState.java   ← État client (features actives)
-│   ├── ClientPacketHandler.java← Proxy pour ouvrir les écrans depuis les packets
-│   ├── InvSeeScreen.java       ← Écran inventaire (lecture seule)
-│   ├── TopLuckScreen.java      ← Écran classement Top Luck
-│   ├── VanishHUD.java          ← Indicateur [VANISH] clignotant
+│   ├── AdminPanel.java         ← Admin panel GUI (K key)
+│   ├── ClientAdminState.java   ← Client state (active features)
+│   ├── ClientPacketHandler.java← Proxy to open screens from packets
+│   ├── InvSeeScreen.java       ← Inventory screen (read-only)
+│   ├── TopLuckScreen.java      ← Top Luck ranking screen
+│   ├── VanishHUD.java          ← Blinking [VANISH] indicator
 │   └── render/
-│       ├── ESPRenderer.java    ← Rendu ore/entity ESP (through walls)
-│       └── ESPRenderType.java  ← RenderType sans depth test
+│       ├── ESPRenderer.java    ← Ore/entity ESP rendering (through walls)
+│       └── ESPRenderType.java  ← RenderType without depth test
 ├── server/
-│   ├── AdminCommand.java       ← Commande /at
-│   ├── TopLuckTracker.java     ← Suivi ratio minerais par joueur
+│   ├── AdminCommand.java       ← /at command
+│   ├── TopLuckTracker.java     ← Tracking ore ratio per player
 │   └── anticheat/
-│       ├── AntiCheatManager.java ← Détections Fly/NoClip/XRay
+│       ├── AntiCheatManager.java ← Fly/NoClip/XRay detections
 │       └── ViolationType.java
 ├── events/
 │   ├── ServerEvents.java       ← Login/Logout/Tick/BlockBreak
-│   └── ClientEvents.java       ← Touches, ESP, HUD
+│   └── ClientEvents.java       ← Keys, ESP, HUD
 └── network/
-    ├── NetworkHandler.java     ← Canal SimpleChannel (optionnel côté client)
+    ├── NetworkHandler.java     ← SimpleChannel channel (optional client side)
     └── packets/
         ├── C2STogglePacket.java
         ├── C2SInvSeePacket.java
@@ -300,66 +301,58 @@ cd admintools
         ├── S2CViolationPacket.java
         ├── S2CInvSeePacket.java
         └── S2CTopLuckPacket.java</code></pre>
-        </section>
-
-        <!-- Compatibilité & Licence -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <section class="glass-card p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔮 Compatibilité</h2>
-                <div class="overflow-x-auto">
-                    <table>
-                        <thead>
-                            <tr><th>Version MC</th><th>Loader</th><th>Statut</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1.20.1</td><td>Forge 47.x</td><td>✅ Supporté</td></tr>
-                            <tr><td>1.21.1</td><td>NeoForge</td><td>🔜 Prévu</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-[#30363d] pb-2">🤝 Contribuer</h2>
-                <ol class="list-decimal pl-6 space-y-1 text-gray-300 text-sm">
-                    <li><strong class="text-white">Fork</strong> le dépôt</li>
-                    <li>Crée une branche : <code>git checkout -b feature/ma-feature</code></li>
-                    <li>Commit : <code>git commit -m "feat: description"</code></li>
-                    <li>Push : <code>git push origin feature/ma-feature</code></li>
-                    <li>Ouvre une <strong class="text-white">Pull Request</strong></li>
-                </ol>
-            </section>
-
-            <section class="glass-card p-6 md:p-8">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">📜 Licence</h2>
-                <p class="mb-4">Ce mod est distribué sous la licence <strong class="text-white">Polyform Noncommercial 1.0.0</strong>.</p>
-                
-                <h3 class="text-green-400 font-semibold mb-2">✅ Autorisé :</h3>
-                <ul class="list-disc pl-6 space-y-1 mb-6 text-gray-300 text-sm">
-                    <li>Usage personnel, sur ton propre serveur (gratuit)</li>
-                    <li>Modification et redistribution non-commerciale</li>
-                    <li>Usage dans un contexte associatif ou éducatif</li>
-                </ul>
-
-                <h3 class="text-red-400 font-semibold mb-2">❌ Interdit :</h3>
-                <ul class="list-disc pl-6 space-y-1 text-gray-300 text-sm">
-                    <li>Vendre le mod ou l'accès à celui-ci</li>
-                    <li>L'inclure dans un produit commercial</li>
-                    <li>L'utiliser dans un service payant</li>
-                </ul>
-                <p class="mt-4 text-sm text-gray-400">Voir <a href="https://github.com/Floodfield-Sudio/Admin-Tool/blob/main/LICENSE">LICENSE</a> pour les détails complets.</p>
-            </section>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="mt-8 pb-8 text-center text-gray-500 text-sm w-full max-w-4xl border-t border-[#30363d] pt-8">
-        <p>Ouvre une <a href="https://github.com/Floodfield-Sudio/Admin-Tool/issues">issue</a> pour les bugs ou suggestions.</p>
-        <p class="mt-2">Voir nos autres projets sur <a href="https://floodfield-sudio.github.io/FFS.index/">Notre Site Web</a></p>
-        <p class="mt-4">&copy; 2022 Floodfield Studios.</p>
-    </footer>
-
-    <!-- Script pour le bouton Copier -->
-    <script>
+</section>
+ Compatibility &amp; License 
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">🔮 Compatibility</h2>
+<div class="overflow-x-auto">
+<table>
+<thead>
+<tr><th>MC version</th><th>Loader</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td>1.20.1</td><td>Forge 47.x</td><td>✅ Supported</td></tr>
+<tr><td>1.21.1</td><td>NeoForge</td><td>🔜 Planned</td></tr>
+</tbody>
+</table>
+</div>
+<h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-[#30363d] pb-2">🤝 Contribute</h2>
+<ol class="list-decimal pl-6 space-y-1 text-gray-300 text-sm">
+<li><strong class="text-white">Fork</strong> the repository</li>
+<li>Create a branch: <code>git checkout -b feature/ma-feature</code></li>
+<li>Commit: <code>git commit -m "feat: description"</code></li>
+<li>Push: <code>git push origin feature/ma-feature</code></li>
+<li>Open a <strong class="text-white">Pull Request</strong></li>
+</ol>
+</section>
+<section class="glass-card p-6 md:p-8">
+<h2 class="text-2xl font-bold text-white mb-6 border-b border-[#30363d] pb-2">📜 License</h2>
+<p class="mb-4">This mod is distributed under the license <strong class="text-white">Polyform Noncommercial 1.0.0</strong>.</p>
+<h3 class="text-green-400 font-semibold mb-2">✅ Allowed :</h3>
+<ul class="list-disc pl-6 space-y-1 mb-6 text-gray-300 text-sm">
+<li>Personal use, on your own server (free)</li>
+<li>Non-commercial modification and redistribution</li>
+<li>Use in an associative or educational context</li>
+</ul>
+<h3 class="text-red-400 font-semibold mb-2">❌ Forbidden :</h3>
+<ul class="list-disc pl-6 space-y-1 text-gray-300 text-sm">
+<li>Sell the mod or access to it</li>
+<li>Include it in a commercial product</li>
+<li>Use it in a paid service</li>
+</ul>
+<p class="mt-4 text-sm text-gray-400">See <a href="https://github.com/Floodfield-Sudio/Admin-Tool/blob/main/LICENSE">LICENSE</a> for full details.</p>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-8 pb-8 text-center text-gray-500 text-sm w-full max-w-4xl border-t border-[#30363d] pt-8">
+<p>Open a <a href="https://github.com/Floodfield-Sudio/Admin-Tool/issues">issue</a> for bugs or suggestions.</p>
+<p class="mt-2">See our other projects on <a href="https://floodfield-sudio.github.io/FFS.index/">Our Website</a></p>
+<p class="mt-4">© 2022 Floodfield Studios.</p>
+</footer>
+ Script pour le bouton Copy 
+<script>
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('pre').forEach(pre => {
                 const codeElement = pre.querySelector('code');
@@ -410,6 +403,68 @@ cd admintools
                 pre.appendChild(button);
             });
         });
+    </script>
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const pairs = [["Affiche les joueurs et mobs à travers les murs (bleu = joueur, rouge = hostile, vert = passif)", "Shows players and mobs through walls (blue = player, red = hostile, green = passive)"], ["Méthode compatible pour copier (marche même dans les iframes sur certains navigateurs)", "Compatible copy method (works even in iframes on some browsers)"], ["Affiche les minerais à travers les blocs dans un rayon de 64 blocs, colorés par type", "Shows ores through blocks within a 64-block radius, colored by type"], ["Passe en spectateur (noclip natif), restaure le mode précédent à la désactivation", "Switches to spectator mode (native noclip), restores the previous mode when disabled"], ["Détection automatique des ores de mods (Create, Mekanism, Thermal Series, etc.)", "Automatic detection of mod ores (Create, Mekanism, Thermal Series, etc.)"], ["Inspection de l'inventaire complet d'un joueur en temps réel (lecture seule).", "View a player's full inventory in real time (read-only)."], ["Vue détaillée : barres par type de minerai + liste de tous les blocs cassés", "Detailed view: bars by ore type + list of all broken blocks"], ["— liste des joueurs en ligne, avec boutons TP / InvSee / Check", "— list of online players, with TP / InvSee / Check buttons"], [" : les joueurs normaux n'ont pas besoin de l'installer.", ": normal players do not need to install it."], ["— toggles pour activer/désactiver chaque fonctionnalité", "— toggles to enable/disable each feature"], ["Ratio correct par dimension (Overworld / Nether / End)", "Correct ratio by dimension (Overworld / Nether / End)"], ["Reçoit les notifications de violation en temps réel", "Receives violation notifications in real time"], ["Usage personnel, sur ton propre serveur (gratuit)", "Personal use, on your own server (free)"], ["Détecte les déplacements dans les blocs solides", "Detects movement inside solid blocks"], ["Les joueurs n'ont pas besoin d'installer le mod", "Players do not need to install the mod"], ["Proxy pour ouvrir les écrans depuis les packets", "Proxy to open screens from packets"], ["Modification et redistribution non-commerciale", "Non-commercial modification and redistribution"], ["Usage dans un contexte associatif ou éducatif", "Use in an associative or educational context"], ["Canal SimpleChannel (optionnel côté client)", "SimpleChannel channel (optional client side)"], ["— log scrollable des alertes anti-cheat", "— scrollable log of anti-cheat alerts"], ["État serveur (features, vanish, noclip)", "Server state (features, vanish, noclip)"], ["administrateurs de serveurs Minecraft", "Minecraft server administrators"], ["Nécessaire pour positionner le bouton", "Needed to position the button"], ["Rendu ore/entity ESP (through walls)", "Ore/entity ESP rendering (through walls)"], ["Ce mod est distribué sous la licence", "This mod is distributed under the license"], ["L'inclure dans un produit commercial", "Include it in a commercial product"], ["Rend l'admin invisible + indicateur", "Makes the admin invisible + indicator"], ["Détecte les taux de minage suspects", "Detects suspicious mining rates"], ["Vendre le mod ou l'accès à celui-ci", "Sell the mod or access to it"], ["Se connecter au serveur — le panel", "Join the server — the panel"], ["Changement d'état visuel au succès", "Visual state change on success"], ["Onglet ⛏ Minecraft → Forge 1.20.1", "Minecraft tab → Forge 1.20.1"], ["L'utiliser dans un service payant", "Use it in a paid service"], ["Classement des joueurs par ratio", "Player ranking by ratio"], ["(pierre, netherrack, end stone).", "(stone, netherrack, end stone)."], ["Écran inventaire (lecture seule)", "Inventory screen (read-only)"], ["Détections Anti-Cheat (serveur)", "Anti-Cheat detections (server)"], ["Ouvre un panel avec 3 onglets :", "Opens a panel with 3 tabs:"], ["Infos rapides (mode, pos, ping)", "Quick info (mode, position, ping)"], ["Suivi ratio minerais par joueur", "Tracking ore ratio per player"], ["État client (features actives)", "Client state (active features)"], ["Indicateur [VANISH] clignotant", "Blinking [VANISH] indicator"], ["Styles pour le bouton de copie", "Copy button styles"], ["ESP (client admin uniquement)", "ESP (admin client only)"], ["DTO neutre pour le classement", "Neutral DTO for ranking"], ["pour les bugs ou suggestions.", "for bugs or suggestions."], ["Mod Forge 1.20.1 destiné aux", "Forge 1.20.1 mod for"], ["Login/Logout/Tick/BlockBreak", "Login/Logout/Tick/BlockBreak"], ["Espace pour le bouton copier", "Space for the copy button"], ["et les ESP sont disponibles", "and ESP features are available"], ["Ou utiliser DevStudio Pro :", "Or use DevStudio Pro:"], ["Voir nos autres projets sur", "See our other projects on"], ["GUI panel admin (touche K)", "Admin panel GUI (K key)"], ["RenderType sans depth test", "RenderType without depth test"], ["Détections Fly/NoClip/XRay", "Fly/NoClip/XRay detections"], ["pour les détails complets.", "for full details."], ["3 détections consécutives", "3 consecutive detections"], ["Classement minerais (GUI)", "Ore ranking (GUI)"], ["Écran classement Top Luck", "Top Luck ranking screen"], ["clignotant sur son écran", "blinking on their screen"], ["Se téléporter au joueur", "Teleport to the player"], ["Voir l'inventaire (GUI)", "View the inventory (GUI)"], ["Erreur lors de la copie", "Error while copying"], ["80 ticks (4s) en l'air", "80 ticks (4s) in the air"], ["Détecte le vol illégal", "Detects illegal flying"], ["Statut de ses features", "Shows your feature status"], ["Entrée principale @Mod", "Main entry point @Mod"], ["optionnel côté client", "optional on the client side"], ["35% ores / roche hôte", "35% ores / host rock"], ["minerais / roche hôte", "ores / host rock"], ["Statut d'un joueur op", "Shows an operator player's status"], ["Redémarrer le serveur", "Restart the server"], ["Panel admin — touche", "Admin panel — key"], ["Basculer une feature", "Toggle a feature"], ["de son client Forge", "to their Forge client"], ["Enum des 8 features", "Enum of the 8 features"], ["Retour à l'accueil", "Back to home"], ["Alertes Anti-Cheat", "Anti-Cheat Alerts"], ["Forcer une feature", "Force a feature"], ["Noms de features :", "Feature names:"], ["Crée une branche :", "Create a branch:"], ["pour se connecter", "to join"], ["Admin (optionnel)", "Admin (optional)"], ["Ouvrir le dossier", "Open the folder"], ["Structure du code", "Code structure"], ["Touches, ESP, HUD", "Keys, ESP, HUD"], ["Fonctionnalités", "Features"], ["dans le dossier", "into the"], ["Cliquer 🔨 Build", "Click 🔨 Build"], ["Notre Site Web", "Our Website"], ["Aide complète", "Full help"], ["Compatibilité", "Compatibility"], ["Outils Admin", "Admin Tools"], ["Installation", "Installation"], ["comme projet", "as a project"], ["Commande /at", "/at command"], ["Pull Request", "Pull Request"], ["Utilisation", "Usage"], ["Compilation", "Build"], ["Prérequis :", "Requirements:"], ["Le mod est", "The mod is"], ["Violations", "Violations"], ["du serveur", "server"], ["Version MC", "MC version"], ["Contribuer", "Contribute"], ["Détection", "Detection"], ["Commandes", "Commands"], ["Copier le", "Copy the"], ["Ouvre une", "Open a"], ["Ouvre une", "Open a"], ["Top Luck", "Top Luck"], ["Features", "Features"], ["Requiert", "Requires"], ["minimum.", "minimum."], ["Supporté", "Supported"], ["Commit :", "Commit:"], ["Autorisé", "Allowed"], ["Interdit", "Forbidden"], ["Joueurs", "Players"], ["Serveur", "Server"], ["Licence", "License"], ["Copié !", "Copied!"], ["InvSee", "InvSee"], ["Statut", "Status"], ["Push :", "Push:"], ["Copier", "Copy"], ["Seuil", "Threshold"], ["Prévu", "Planned"], ["issue", "issue"], ["Fork", "Fork"], ["Voir", "See"]];
+        const titleMap = {"en": "AdminTools — Anti-Cheat & Admin Panel", "fr": "AdminTools — Panneau admin & anti-triche"};
+        const storageKey = 'siteLang';
+        let currentLang = 'en';
+
+        function translateText(text, fromLang, toLang) {
+          const sourcePairs = fromLang === 'fr' ? pairs : pairs.map(([fr, en]) => [en, fr]);
+          let out = text;
+          sourcePairs.forEach(([from, to]) => {
+            if (from && to && out.includes(from)) {
+              out = out.split(from).join(to);
+            }
+          });
+          return out;
+        }
+
+        function walkTextNodes(root, fromLang, toLang) {
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+              const parent = node.parentElement;
+              if (!parent) return NodeFilter.FILTER_REJECT;
+              if (['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+          const nodes = [];
+          while (walker.nextNode()) nodes.push(walker.currentNode);
+          nodes.forEach(node => {
+            node.nodeValue = translateText(node.nodeValue, fromLang, toLang);
+          });
+        }
+
+        function setButtons(lang) {
+          const btnFr = document.getElementById('btn-fr');
+          const btnEn = document.getElementById('btn-en');
+          if (btnFr) btnFr.classList.toggle('active', lang === 'fr');
+          if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+        }
+
+        function applyLanguage(lang) {
+          if (lang !== currentLang) {
+            walkTextNodes(document.body, currentLang, lang);
+            currentLang = lang;
+          }
+          document.documentElement.lang = lang;
+          if (titleMap[lang]) document.title = titleMap[lang];
+          localStorage.setItem(storageKey, lang);
+          setButtons(lang);
+        }
+
+        const saved = localStorage.getItem(storageKey);
+        const defaultLang = 'en';
+        applyLanguage(saved || defaultLang);
+
+        const btnFr = document.getElementById('btn-fr');
+        const btnEn = document.getElementById('btn-en');
+        if (btnFr) btnFr.addEventListener('click', () => applyLanguage('fr'));
+        if (btnEn) btnEn.addEventListener('click', () => applyLanguage('en'));
+      });
     </script>
 </body>
 </html>
